@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USports - Your Ultimate Sports Hub</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+
+        #chatbot {
+            display: none; /* Hidden by default */
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 350px;
+            max-width: 90%;
+            background: var(--card-bg);
+            border: 1px solid var(--primary-color);
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+            z-index: 1000;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: var(--transition);
+        }
+
+        #chat-header {
+            background: var(--primary-color);
+            color: var(--text-color-light);
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+        }
+
+        #chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 15px;
+            background: var(--background-color);
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Chatbot Badge Styles */
+        .chatbot-badge {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: var(--card-shadow);
+            z-index: 1001; /* Ensure it is above other elements */
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .chatbot-badge:hover {
+            background-color: var(--secondary-color);
+            transform: scale(1.1);
+        }
+
+        .chatbot-icon {
+            width: 70%;
+            height: 70%;
+            object-fit: contain;
+        }
+
+        .message {
+            margin-bottom: 10px;
+            padding: 10px 15px;
+            border-radius: var(--border-radius);
+            max-width: 80%;
+            word-wrap: break-word;
+            position: relative;
+        }
+
+        .message.bot {
+            background-color: var(--primary-color);
+            color: var(--text-color-light);
+            align-self: flex-start;
+        }
+
+        .message.user {
+            background-color: var(--secondary-color);
+            color: var(--text-color-light);
+            align-self: flex-end;
+        }
+
+        #chat-input {
+            display: flex;
+            padding: 15px;
+            background: var(--card-bg);
+            border-top: 1px solid var(--primary-color);
+        }
+
+        #user-input {
+            flex-grow: 1;
+            padding: 10px 15px;
+            border: 1px solid var(--primary-color);
+            border-radius: var(--border-radius);
+            background: var(--background-color);
+            color: var(--text-color);
+            font-size: 1rem;
+            outline: none;
+        }
+
+        #send-button {
+            background-color: var(--accent-color);
+            color: var(--text-color-light);
+            border: none;
+            padding: 10px 20px;
+            margin-left: 10px;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            font-weight: bold;
+        }
+
+        #send-button:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        .close-chatbot {
+            background: none;
+            border: none;
+            color: var(--text-color-light);
+            font-size: 24px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-chatbot:hover {
+             color: var(--accent-color);
+        }
+
+        /* Typing Indicator Styles */
+        .typing-indicator {
+            font-style: italic;
+            color: var(--text-color);
+            margin-bottom: 10px;
+        }
+
+        /* Responsive design for chatbot */
+        @media (max-width: 768px) {
+            #chatbot {
+                width: 90%;
+                bottom: 70px;
+                right: 5%;
+                left: 5%;
+            }
+
+            .chatbot-badge {
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+            }
+        }
+
+        /* Scrollbar Styling */
+        #chat-messages::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        #chat-messages::-webkit-scrollbar-track {
+            background: var(--background-color);
+        }
+
+        #chat-messages::-webkit-scrollbar-thumb {
+            background-color: var(--primary-color);
+            border-radius: 4px;
+            border: 2px solid var(--background-color);
+        }
+
+    </style>
+</head>
+<body data-theme="dark">
+    <header>
+        <nav id="main-nav" aria-label="Main Navigation">
+            <div class="container">
+                <a href="#" class="logo">
+                    <img src="img/u_sports.jpg" alt="USports Logo" />
+                </a>
+                <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-links">
+                    <li><a href="#main" class="nav-link">Home</a></li>
+                    <li><a href="#events" class="nav-link">Events</a></li>
+                    <li><a href="#sports" class="nav-link">Sports</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                    <li><button id="signup-button" class="btn btn-signup">Sign Up</button></li>
+                </ul>
+                <button class="theme-switch" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main">
+        <section id="hero" class="parallax">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="animate-on-scroll">Unleash Your Potential</h1>
+                    <h2 class="animate-on-scroll">Through Sports</h2>
+                    <a href="#sports" class="btn btn-cta animate-on-scroll">Explore Sports</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="container">
+                <h2 class="section-title animate-on-scroll">We are USports Team</h2>
+                <div class="about-container">
+                    <div class="about-text animate-on-scroll">
+                        <h3>"No more queues for booking your sports here's your hassle-free solution!"</h3>
+                        <p>We aim to empower you to be more efficient and productive by streamlining your sports experience. With easy online booking, you can reserve time slots effortlessly, ensuring you make the most of your time on the field.</p>
+                        <a href="#" class="btn btn-secondary">About Us</a>
+                    </div>
+                    <div class="about-image animate-on-scroll">
+                        <img src="" alt="Sports facilities showing a modern gym with various equipment" />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="sports">
+            <div class="container">
+                <h2 class="section-title animate-on-scroll">Our Sports</h2>
+                <div id="sports-list" class="sports-grid animate-on-scroll">
+                    <!-- Sports items will be dynamically added here -->
+                </div>
+                <button class="btn btn-secondary load-more-btn">Load More Sports</button>
+            </div>
+        </section>
+
+        <section id="events">
+            <div class="container">
+                <h2 class="section-title animate-on-scroll">Events and News</h2>
+                <div id="events-list" class="events-grid animate-on-scroll">
+                    <!-- Event items will be dynamically added here -->
+                </div>
+            </div>
+        </section>
+
+        <section id="user-preferences">
+            <div class="container">
+                <h2 class="section-title">Your Preferences</h2>
+                <form id="preferences-form">
+                    <label for="favorite-sport">Favorite Sport:</label>
+                    <select id="favorite-sport" name="favorite-sport" required>
+                        <option value="">Choose your favorite sport</option>
+                        <option value="football">Football</option>
+                        <option value="basketball">Basketball</option>
+                        <option value="tennis">Tennis</option>
+                        <option value="table-tennis">Table Tennis</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <button type="submit" class="btn btn-primary">Save Preferences</button>
+                </form>
+                <div id="preferences-confirmation" class="confirmation-message"></div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <h2 class="section-title">Contact Us</h2>
+                <form id="contact-form">
+                    <div class="form-group">
+                        <label for="username">Name:</label>
+                        <input type="text" id="username" name="username" required placeholder="Your Name" />
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required placeholder="Your Email" />
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message:</label>
+                        <textarea id="message" name="message" required placeholder="Your Message" rows="4"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+                <div id="contact-confirmation" class="confirmation-message"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>&copy; 2024 USports. All rights reserved.</p>
+                    <p>Your go-to platform for all sports-related events and bookings.</p>
+                </div>
+                <div class="social-media">
+                    <h3>Follow Us</h3>
+                    <ul>
+                        <li><a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Signup Popup -->
+    <div id="signup-popup" class="signup-popup" aria-hidden="true">
+        <div class="popup-content">
+            <span class="close-popup" aria-label="Close Signup Popup">&times;</span>
+            <h2>Sign Up</h2>
+            <form id="signup-form">
+                <input type="text" id="signup-username" name="username" placeholder="Username" required>
+                <input type="email" id="signup-email" name="email" placeholder="Email" required>
+                <input type="password" id="signup-password" name="password" placeholder="Password" required>
+                <button type="submit" class="btn">Sign Up</button>
+            </form>
+            <p id="signup-message"></p>
+        </div>
+    </div>
+
+    <!-- Event Popup -->
+    <div id="eventPopup" class="popup" aria-hidden="true">
+        <div class="popup-content">
+            <button class="close-popup" aria-label="Close Event Popup">&times;</button>
+            <h3 id="popupEventTitle"></h3>
+            <p id="popupEventDate"></p>
+            <p id="popupEventDescription"></p>
+        </div>
+    </div>
+
+    <!-- Chatbot Badge -->
+    <div id="chatbotBadge" class="chatbot-badge" aria-label="Open Chatbot">
+        <i class="fas fa-comment-dots"></i>
+    </div>
+
+    <!-- Chatbot Window -->
+    <div id="chatbot" aria-hidden="true" style="display: none;">
+        <div id="chat-header">
+            🤖 Interactive Sports Buddy AI
+            <button class="close-chatbot" aria-label="Close Chatbot">&times;</button>
+        </div>
+        <div id="chat-messages"></div>
+        <div id="chat-input">
+            <input type="text" id="user-input" placeholder="Type your message..." aria-label="Type your message">
+            <button id="send-button">Send</button>
+        </div>
+    </div>
+
+    <!-- Event Detail Modal -->
+    <div id="eventDetailModal-overlay"></div>
+    <div id="eventDetailModal">
+        <span class="close-modal">&times;</span>
+        <img id="eventDetailImage" src="" alt="Event Image">
+        <h3 id="eventDetailTitle"></h3>
+        <p id="eventDetailDate"></p>
+        <p id="eventDetailDescription"></p>
+    </div>
+
+    <script src="chatbot/chatbot.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

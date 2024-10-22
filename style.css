@@ -1,0 +1,856 @@
+:root {
+    /* Light Theme Colors */
+    --primary-color: #0056b3; /* Darker blue for better contrast */
+    --secondary-color: #00796b; /* Dark teal for visibility */
+    --accent-color: #ff8c00; /* Darker orange for highlights */
+    --background-color: #f7f9fc; /* Very light grayish blue */
+    --text-color: #2c3e50; /* Dark slate gray */
+    --card-bg: #ffffff; /* Pure white for card background */
+    --border-color: #b0bec5; /* Medium gray for borders */
+    --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+    --border-radius: 8px;
+}
+
+/* Dark Theme Colors */
+body[data-theme='dark'] {
+    --primary-color: #1E90FF; /* Dodger Blue for better contrast */
+    --secondary-color: #32CD32; /* Lime Green for visibility */
+    --accent-color: #FFD700; /* Gold for highlights */
+    --background-color: #1C1C1C; /* Dark Grayish Black */
+    --text-color: #FFFFFF; /* White for maximum contrast */
+    --card-bg: #2A2A2A; /* Darker Gray */
+    --border-color: #444444; /* Slightly lighter border for visibility */
+    --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.6); /* Darker shadow */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    transition: var(--transition);
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header Styles */
+header {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    padding: 0;
+    position: fixed;
+    width: 100%;
+    height: var(--header-height);
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#main-nav .container {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    height: 40px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    align-items: center;
+}
+
+.nav-links li:last-child {
+    margin-left: auto;
+}
+
+.btn-signup {
+    margin-left: 1rem;
+}
+
+.nav-link {
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    transition: var(--transition);
+    margin-right: 0.5rem;
+}
+
+.nav-link:hover {
+    color: var(--secondary-color);
+}
+
+.theme-switch {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.mobile-menu-toggle {
+    display: none;
+}
+
+/* Button Styles */
+.btn {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: var(--transition);
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+}
+
+.btn:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+/* Hero Section */
+#hero {
+    background-image: url('img/bg.jpeg'); /* Replace with your image path */
+    background-size: cover; /* Ensures the image covers the entire section */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    height: 100vh; /* Adjust the height as needed */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-color-light); /* Ensures text is readable */
+    text-align: center;
+    padding: 20px;
+}
+
+#hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    color: var(--text-color-light);
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+}
+
+.hero-content h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+/* Sections */
+section {
+    padding: 5rem 0;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+    color: var(--primary-color);
+}
+
+/* About Section */
+.about-container {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.about-text, .about-image {
+    flex: 1;
+}
+
+.about-image img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: var(--card-shadow);
+}
+
+/* Sports and Events Grid */
+.sports-grid, .events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.sport-item, .event-item {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--card-shadow);
+    transition: var(--transition);
+}
+
+.sport-item:hover, .event-item:hover {
+    transform: translateY(-5px);
+}
+
+.sport-item img, .event-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.sport-item h3, .event-item h3 {
+    padding: 1rem;
+    color: var(--text-color);
+}
+
+.sport-item p, .event-item p {
+    padding: 0 1rem 1rem;
+}
+
+/* Forms */
+form {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    transition: var(--transition);
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.2);
+}
+
+/* Footer */
+#footer {
+    background-color: var(--primary-color);
+    color: var(--text-color-light);
+    padding: 3rem 0;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.social-media ul {
+    display: flex;
+    list-style: none;
+    gap: 1rem;
+}
+
+.social-media a {
+    color: var(--text-color-light);
+    font-size: 1.5rem;
+    transition: var(--transition);
+}
+
+.social-media a:hover {
+    color: var(--secondary-color);
+}
+
+/* Popup Styles */
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    max-width: 400px;
+    width: 90%;
+    position: relative;
+    box-shadow: var(--card-shadow);
+}
+
+.close-popup {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+/* Center the signup form */
+#signup-popup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#signup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+#signup-form .form-group {
+    margin-bottom: 0;
+}
+
+#signup-form input {
+    background-color: var(--background-color);
+    border: 1px solid var(--primary-color);
+    color: var(--text-color);
+}
+
+#signup-form button {
+    margin-top: 1rem;
+}
+
+/* Improve contrast for better readability */
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+}
+
+.sport-item h3, .event-item h3 {
+    color: var(--text-color);
+}
+
+/* Adjust header and footer colors for better contrast */
+header, #footer {
+    background-color: var(--primary-color);
+}
+
+/* Improve form input visibility */
+input, select, textarea {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+}
+
+/* Adjust section title color for better visibility */
+.section-title {
+    color: var(--text-color);
+}
+
+/* Improve visibility of social media icons in the footer */
+.social-media a {
+    color: var(--text-color-light);
+}
+
+.social-media a:hover {
+    color: var(--secondary-color);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    :root {
+        --header-height: 50px;
+    }
+
+    .container {
+        width: 95%;
+        padding: 0 10px;
+    }
+
+    .mobile-menu-toggle {
+        display: block;
+        background: none;
+        border: none;
+        color: var(--text-color-light);
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--primary-color);
+        padding: 1rem 0;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-link {
+        padding: 0.5rem 1rem;
+    }
+
+    .about-container {
+        flex-direction: column;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-content h2 {
+        font-size: 1.2rem;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .sports-grid, .events-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-on-scroll {
+    opacity: 0;
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+.animate-on-scroll.active {
+    opacity: 1;
+}
+
+/* Improved accessibility */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* Add smooth scrolling for better user experience */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Add preferences styles */
+#user-preferences {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    box-shadow: var(--card-shadow);
+    margin-top: 2rem;
+}
+
+#preferences-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+#favorite-sport {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23333' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 12px;
+    padding-right: 2.5rem;
+}
+
+#favorite-sport:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+.preferences-saved {
+    background-color: var(--secondary-color);
+    color: var(--text-color-light);
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+    margin-top: 1rem;
+    display: none;
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Explore Sports button styles */
+.btn-cta {
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    font-size: 1.1rem;
+    font-weight: bold;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-cta:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-cta::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 150%;
+    height: 150%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: translate(-50%, -50%) scale(0);
+    border-radius: 50%;
+    transition: transform 0.5s;
+}
+
+.btn-cta:hover::after {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.event-item {
+    margin-bottom: 20px;
+    border: 1px solid var(--primary-color);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    background: var(--card-bg);
+    box-shadow: var(--card-shadow);
+    padding: 15px;
+    transition: box-shadow 0.3s ease;
+}
+
+.event-item:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.event-image {
+    width: 100%;
+    height: auto;
+    border-radius: var(--border-radius);
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1001; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.7); /* Black w/ opacity */
+}
+
+.modal-content {
+    background-color: var(--card-bg); /* Use the card background color */
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid var(--primary-color); /* Use primary color for the border */
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+.close-modal {
+    color: var(--text-color-light); /* Use light text color for better visibility */
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-modal:hover,
+.close-modal:focus {
+    color: var(--accent-color); /* Change to accent color on hover */
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.event-detail-image {
+    width: 100%;
+    height: auto;
+    border-radius: var(--border-radius);
+}
+
+.view-details {
+    background-color: var(--accent-color);
+    color: var(--text-color-light);
+    border: none;
+    padding: 10px 15px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-weight: bold;
+    text-align: center;
+    display: inline-block;
+}
+
+.view-details:hover {
+    background-color: var(--secondary-color);
+    transform: scale(1.05);
+}
+
+.view-details:focus {
+    outline: none; /* Remove default outline on focus */
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.5); /* Add a subtle shadow for focus indication */
+}
+
+.full-description {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease, opacity 0.5s ease;
+    opacity: 0;
+}
+
+.full-description.open {
+    max-height: 500px; /* Adjust based on content size */
+    opacity: 1;
+}
+
+/* Signup Popup Styles */
+.signup-popup {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup-content {
+    background-color: var(--card-bg);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    width: 90%;
+    max-width: 400px;
+    box-shadow: var(--card-shadow);
+    position: relative;
+}
+
+.close-popup {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.signup-popup form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.signup-popup input {
+    padding: 10px;
+    border: 1px solid var(--primary-color);
+    border-radius: var(--border-radius);
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.signup-popup button.btn {
+    background-color: var(--accent-color);
+    color: var(--text-color-light);
+    border: none;
+    padding: 10px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.signup-popup button.btn:hover {
+    background-color: var(--secondary-color);
+}
+
+#signup-message {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+input::placeholder, select::placeholder, textarea::placeholder {
+    color: #b0bec5;
+}
+
+/* Sections */
+section:nth-child(even) {
+    background-color: var(--background-color);
+}
+
+section:nth-child(odd) {
+    background-color: var(--card-bg);
+}
+
+/* Forms/Inputs */
+input, select, textarea {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+}
+
+input::placeholder, select::placeholder, textarea::placeholder {
+    color: #b0bec5; /* Medium Gray */
+}
+
+/* Add this to your CSS file or within a <style> tag */
+#eventDetailModal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 600px;
+    background-color: var(--modal-bg-color, white); /* Use a CSS variable for theme */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    color: var(--text-color, black); /* Use a CSS variable for theme */
+}
+
+#eventDetailModal.show {
+    display: block;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+#eventDetailModal img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+#eventDetailModal h3,
+#eventDetailModal p {
+    margin: 10px 0;
+    color: var(--text-color, black); /* Ensure text is visible */
+}
+
+#eventDetailModal .close-modal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    color: var(--text-color, black); /* Ensure close button is visible */
+}
+
+#eventDetailModal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+#eventDetailModal-overlay.show {
+    display: block;
+}
+
+.load-more-btn {
+    display: block; /* Ensures the button takes up the full width of its container */
+    margin: 20px auto; /* Centers the button horizontally and adds vertical spacing */
+    padding: 10px 20px; /* Adds padding for a larger clickable area */
+    background-color: var(--primary-color); /* Use your theme's primary color */
+    color: var(--text-color-light); /* Ensure text is visible */
+    border: none;
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer;
+    font-size: 1rem; /* Adjust font size as needed */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.load-more-btn:hover {
+    background-color: var(--secondary-color); /* Change color on hover for feedback */
+    transform: translateY(-2px); /* Slight lift effect on hover */
+}
+
+.load-more-btn:focus {
+    outline: none; /* Remove default outline */
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.5); /* Add a subtle focus shadow */
+}
