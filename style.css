@@ -1,8 +1,8 @@
 :root {
     /* Light Theme Colors */
-    --primary-color: #0056b3; /* Darker blue for better contrast */
-    --secondary-color: #00796b; /* Dark teal for visibility */
-    --accent-color: #ff8c00; /* Darker orange for highlights */
+    --primary-color: #de3131; /* Darker blue for better contrast */
+    --secondary-color: #a51f36; /* Dark teal for visibility */
+    --accent-color: #ed1936; /* Darker orange for highlights */
     --background-color: #f7f9fc; /* Very light grayish blue */
     --text-color: #2c3e50; /* Dark slate gray */
     --card-bg: #ffffff; /* Pure white for card background */
@@ -14,9 +14,9 @@
 
 /* Dark Theme Colors */
 body[data-theme='dark'] {
-    --primary-color: #1E90FF; /* Dodger Blue for better contrast */
-    --secondary-color: #32CD32; /* Lime Green for visibility */
-    --accent-color: #FFD700; /* Gold for highlights */
+    --primary-color: #474086; /* Dodger Blue for better contrast */
+    --secondary-color: #9c5a33a6; /* Lime Green for visibility */
+    --accent-color: #cdbf3c; /* Gold for highlights */
     --background-color: #1C1C1C; /* Dark Grayish Black */
     --text-color: #FFFFFF; /* White for maximum contrast */
     --card-bg: #2A2A2A; /* Darker Gray */
@@ -34,24 +34,77 @@ body {
     font-family: 'Roboto', sans-serif;
     line-height: 1.6;
     color: var(--text-color);
-    background-color: var(--background-color);
     transition: var(--transition);
 }
+.overlayy {
+    position: fixed;
+    width: 100vw;
+    height: 180vw !important; /* Fixed the height to cover the full viewport */
+    z-index: 20000;
+    display: flex;
+    background-image: url("/img/8_ball_pool.jpg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    border-top: 7px solid black;
+    border-bottom: 2px solid black;
+   margin-top: -145px;
+   margin-left: -12px;
+}
 
+.bar {
+    width: 10vw;
+    height: 180vh;
+    border-right: 0.5px solid rgba(198, 187, 187, 0.649);
+    background-color: rgba(0, 0, 0, 0.423);
+    font-size: 4rem;
+    text-align: center;
+}
+
+.yo {
+    position: initial;
+    font-weight: 700;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-top: 200px;
+    color: whitesmoke;
+    font-size: 4rem;
+
+    font-weight: 700;
+    opacity: 1; /* Initially hidden */
+}
+
+.counter {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: flex-end;
+    align-items: flex-end;
+    z-index: 20001 !important;
+    color: #00b4d8 !important;
+    padding: 0 2em 0 4em;
+    font-size: 20vw;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.hide-loader {
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 200s ease-out; /* Smoothly fades out the loader */
+}
 .container {
-    width: 90%;
-    max-width: 1200px;
+    width: 100%;
+    max-width: 1600px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
 /* Header Styles */
 header {
-    background-color: var(--background-color);
+   
     color: var(--text-color);
     padding: 0;
     position: fixed;
-    width: 100%;
+    width: 100% !important;
     height: var(--header-height);
     z-index: 1000;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -59,6 +112,9 @@ header {
 
 #main-nav .container {
     height: 100%;
+    padding: 10px;
+    margin: 0 !important;
+    width: 100% !important;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -91,7 +147,7 @@ header {
 }
 
 .nav-link:hover {
-    color: var(--secondary-color);
+    background-color: var(--secondary-color);
 }
 
 .theme-switch {
@@ -379,7 +435,7 @@ input:focus, select:focus, textarea:focus {
 }
 
 /* Adjust header and footer colors for better contrast */
-header, #footer {
+#footer {
     background-color: var(--primary-color);
 }
 
@@ -506,10 +562,9 @@ html {
 /* Add preferences styles */
 #user-preferences {
     background-color: var(--card-bg);
-    border-radius: var(--border-radius);
     padding: 2rem;
     box-shadow: var(--card-shadow);
-    margin-top: 2rem;
+
 }
 
 #preferences-form {

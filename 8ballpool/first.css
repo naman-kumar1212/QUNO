@@ -1,0 +1,415 @@
+body {
+    font-family: "Oswald", sans-serif;
+    background-color: #0e0e1e;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+}
+.logo {
+    font-size: 30px;
+    font-weight: bold;
+}
+nav ul {
+    display: flex;
+    list-style-type: none;
+    align-items: center; /* Added to align items vertically */
+}
+nav ul li {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    margin-right: 40px;
+    font-size: 18px;
+}
+.search-bar {
+    background-color: #1c1c2e;
+    border: none;
+    padding: 16px;
+    border-radius: 10px;
+    color: #ffffff;
+    width: 200px;
+    margin-right: 20px; /* Added margin to create space between search bar and login button */
+}
+.login {
+    background-color: #6c5ce7;
+    color: #ffffff;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 12px;
+    cursor: pointer;
+  
+}
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 80px 0;
+}
+.hero-content {
+    width: 50%;
+}
+.hero h1 {
+    font-size: 60px;
+    margin-bottom: 20px;
+}
+.hero p {
+    color: #a0a0a0;
+    margin-bottom: 30px;
+}
+.hero-image img {
+    width: 100%;
+}
+.btn {
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 20px;
+    margin-right: 10px;
+}
+.btn-primary {
+    background-color: #6c5ce7;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 600;
+}
+.btn-secondary {
+    border: 1px solid #6c5ce7;
+    color: #6c5ce7;
+}
+.hero-image {
+    width: 40%;
+    position: relative;
+}
+.hero-image::before {
+    content: "";
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background-color: rgba(108, 92, 231, 0.2);
+    border-radius: 50%;
+    filter: blur(50px);
+    z-index: -1;
+}
+.stats {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    margin: 90px 0;
+    background-color: #1c1c2e;
+    padding: 20px;
+    border-radius: 10px;
+}
+.stat-item h2 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+.stat-item p {
+    color: #a0a0a0;
+}
+.features {
+    display: flex;
+    justify-content: space-between;
+    margin: 80px 0;
+    font-size: 20px;
+    font-weight: 300;
+    gap: 20px;
+}
+.feature-item {
+    background-color: #1c1c2e;
+    padding: 30px;
+    border-radius: 10px;
+    width: 30%;
+}
+.feature-item h3 {
+    margin-top: 20px;
+}
+.about {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 80px 0;
+}
+.about-content {
+    width: 50%;
+    
+}
+.about-content h2 {
+    font-size: 42px;
+    margin-bottom: 20px;
+}
+.about-content p {
+    color: #a0a0a0;
+    margin-bottom: 30px;
+}
+.about-image {
+    width: 40%;
+}
+.about-image img {
+    width: 100%;
+    border-radius: 10px;
+}
+.about-item {
+    font-size: 20px;
+}
+.about-item h4 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    font-size: 20px;
+}
+.key-features {
+    text-align: center;
+    margin: 80px 0;
+}
+.key-features h2 {
+    margin-bottom: 40px;
+}
+.key-features-grid {
+    display: flex;
+    justify-content: space-between;
+}
+.key-feature-item {
+    width: 30%;
+}
+.key-feature-icon {
+    width: 80px;
+    height: 80px;
+    background-color: #6c5ce7;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 20px;
+    font-size: 32px;
+}
+.nft-collection {
+    margin: 80px 0;
+
+}
+.nft-collection h2 {
+    font-size: 46px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.nft-grid {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.nft-item {
+    width: 25%;
+    height: 400px;
+    background-color: #1c1c2e;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+.nft-item2 {
+    width: 25%;
+    height: 400px;
+    background-color: #1c1c2e;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+.nft-item2 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.nft-item img {
+    width: 100%;
+    height: 200px;
+}
+.nft-item h3 {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 30px;
+}
+.nft-item p {
+      margin-bottom: 20px;
+    text-align: center;
+}
+.buy-btn {
+    background-color: #6c5ce7;
+    color: #ffffff;
+    border: none;
+    padding: 10px 40px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+}
+.faq {
+    margin: 80px 0;
+}
+.faq h2 {
+    font-size: 46px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.faq-item {
+    background-color: #1c1c2e;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+.cta {
+    background-color: #6c5ce7;
+    border-radius: 10px;
+    padding: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 80px 0;
+}
+.cta-content {
+    width: 60%;
+}
+.cta-image {
+    width: 30%;
+}
+footer {
+    background-color: #1c1c2e;
+    padding: 80px 0;
+}
+.footer-grid {
+    display: flex;
+    justify-content: space-between;
+}
+.footer-column {
+    width: 23%;
+}
+.footer-column h3 {
+    margin-bottom: 20px;
+}
+.footer-column ul {
+    list-style-type: none;
+    padding: 0;
+}
+.footer-column ul li {
+    margin-bottom: 10px;
+}
+.footer-column ul li a {
+    color: #a0a0a0;
+    text-decoration: none;
+}
+.social-icons a {
+    color: #a0a0a0;
+    margin-right: 10px;
+    font-size: 20px;
+}
+.copyright {
+    text-align: center;
+    margin-top: 40px;
+    color: #a0a0a0;
+    border-top: 1px solid #333;
+    padding-top: 20px;
+}
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+}
+.modal-content {
+  background-color: #0e0e1e;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #0e0e1e;
+  width: 60%;
+  height: 50%;
+  border-radius: 20px;
+}
+.modal-content h2{
+  text-align: center;
+}
+.modal-content label{
+  font-size: 20px;
+}
+#booking-form{
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+  justify-content: center;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#bookingForm button{
+    background-color: #6c5ce7;
+    color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+  display: block;
+  width: 50%;
+  margin: 0 auto;
+  font-size: 20px;
+  margin-top: 20px;
+  font-weight: 600;
+}
+.namerollno{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  text-align: center;
+  margin-left: 20px;
+  margin-right: 20px;
+  font-size: 20px;
+}
+
+select, input {
+  width: 30%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 0 auto;
+  display: block;
+}

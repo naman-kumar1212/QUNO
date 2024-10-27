@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8 Ball Pool</title>
+    <link rel="stylesheet" href="first.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="container">
+        <div class="logo">USports</div>
+        <nav>
+            <ul>
+                <li><a href="#">HOME</a></li>
+                <li><a href="#">PLAY NOW</a></li>
+                <li><a href="#">BOOKINGS</a></li>
+                <li><a href="#">TOURNAMENTS</a></li>
+                <li><a href="#">About Us</a></li>
+                <button class="login">Login</button>
+            </ul>
+            
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <div class="hero-content">
+                <h1>PLAY 8 BALL POOL WITH FRIENDS!</h1>
+                <p>Book your table, challenge your friends, and experience the excitement of 8-ball pool on campus..</p>
+                <a href="#" class="btn btn-primary">Play Now</a>
+                <a href="#" class="btn btn-secondary">About Us</a>
+            </div>
+            <div class="hero-image">
+                <!-- Add your 8 Ball Pool image here -->
+                <img src="img/table2.png" alt="8 Ball Pool">
+            </div>
+        </section>
+        <section class="features">
+            <div class="feature-item">
+                <h3>REALISTIC GAMEPLAY</h3>
+                <p>Experience the thrill of real pool physics.</p>
+            </div>
+            <div class="feature-item">
+                <h3>COMPETE WITH FRIENDS</h3>
+                <p>Challenge your friends and climb the ranks.</p>
+            </div>
+            <div class="feature-item">
+                <h3>DAILY REWARDS</h3>
+                <p>Log in daily for exciting rewards and bonuses.</p>
+            </div>
+        </section>
+
+        <section class="about">
+            <div class="about-image">
+                <img src="img/saint-rambo-BhvoOhQMv5I-unsplash.jpg" alt="8 Ball Pool Game">
+            </div>
+            <div class="about-content">
+                <h2>JOIN THE 8 BALL POOL COMMUNITY</h2>
+                <p>Connect with players, share tips, and improve your skills.</p>
+                <div class="about-item">
+                    <h4>Weekly Tournaments</h4>
+                    <p>Participate and win amazing prizes!</p>
+                </div>
+                <div class="about-item">
+                    <h4>Exclusive Content</h4>
+                    <p>Unlock special cues and tables.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="key-features">
+            <h2>FEATURES OF 8 BALL POOL</h2>
+            <div class="key-features-grid">
+                <div class="key-feature-item">
+                    <div class="key-feature-icon">🎱</div>
+                    <h3>PLAY ANYTIME</h3>
+                    <p>Enjoy 8 Ball Pool whenever you want!</p>
+                </div>
+                <div class="key-feature-item">
+                    <div class="key-feature-icon">🏆</div>
+                    <h3>CLIMB THE RANKS</h3>
+                    <p>Become the best player in the world!</p>
+                </div>
+                <div class="key-feature-item">
+                    <div class="key-feature-icon">💰</div>
+                    <h3>EARN COINS</h3>
+                    <p>Win coins and buy new cues and items.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="nft-collection">
+            <h2>Tables</h2>
+            <div id="bookingModal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2>Book Your Table</h2>
+                    <form id="bookingForm">
+                        <div class="student-count">
+                            <label for="studentCount">Number of Students:</label>
+                            <input type="number" id="studentCount" min="1" max="10" required>
+                            <button type="button" id="nextButton">Next</button>
+                        </div>
+                        <div id="studentDetails" style="display:none;">
+                           
+                        </div>
+                        <div id="bookingTime" style="display:none;">
+                            <label for="time">Booking Time:</label>
+                            <input type="datetime-local" id="time" required>
+                            <button type="submit">Pay</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="nft-grid">
+                <div class="nft-item">
+                    <img src="img/saint-rambo-BhvoOhQMv5I-unsplash.jpg" alt="Cue 1">
+                    <h3>Table 1</h3>
+                    <button class="buy-btn" onclick="openModal('Table 1')">Book</button>
+                </div>
+                <div class="nft-item">
+                    <img src="img/saint-rambo-BhvoOhQMv5I-unsplash.jpg" alt="Cue 2">
+                    <h3>Table 2</h3>
+                    <button class="buy-btn" onclick="openModal('Table 2')">Book</button>
+                </div>
+                <div class="nft-item">
+                    <img src="img/saint-rambo-BhvoOhQMv5I-unsplash.jpg" alt="Cue 3">
+                    <h3>Table 3</h3>
+                    <button class="buy-btn" onclick="openModal('Table 3')">Book</button>
+                </div>
+                <div class="nft-item">
+                    <img src="img/saint-rambo-BhvoOhQMv5I-unsplash.jpg" alt="Cue 4">
+                    <h3>Table 4</h3>
+                    <button class="buy-btn" onclick="openModal('Table 4')">Book</button>
+                </div>
+                <div class="nft-item">
+                    <img src="img/saint-rambo-BhvoOhQMv5I-unsplash.jpg" alt="Cue 5">
+                    <h3>Table 5</h3>
+                    <button class="buy-btn" onclick="openModal('Table 5')">Book</button>
+                </div>
+                <div class="nft-item2">
+                </div>
+            </div>
+        </section>
+
+        <section class="faq">
+            <h2>FREQUENTLY ASKED QUESTIONS</h2>
+            <div class="faq-item">
+                <h3>How do I book a table?</h3>
+            </div>
+            <div class="faq-item">
+                <h3>Is there any cost to book a table?</h3>
+            </div>
+            <div class="faq-item">
+                <h3>Can I play with friends?</h3>
+            </div>
+        </section>
+
+        <section class="cta">
+            <div class="cta-content">
+                <h2>JOIN US NOW</h2>
+                <p>Become part of the 8 Ball Pool community and start playing!</p>
+                <a href="#" class="btn btn-primary">Play Now</a>
+            </div>
+            <div class="cta-image">
+                
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>SPACE</h3>
+                    <div class="social-icons">
+                        <a href="#">Twitter</a>
+                        <a href="#">GitHub</a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>MARKETPLACE</h3>
+                    <ul>
+                        <li><a href="#">Explore</a></li>
+                        <li><a href="#">How it works</a></li>
+                        <li><a href="#">Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>COMPANY</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>CONTACT</h3>
+                    <p>2715 Ash Dr. San Jose, South Dakota 83475</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 USports. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    
+
+    <script src="first.js"></script>
+
+   
+</body>
+</html>
